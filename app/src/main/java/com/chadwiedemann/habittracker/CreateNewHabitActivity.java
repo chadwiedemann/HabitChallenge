@@ -1,0 +1,122 @@
+package com.chadwiedemann.habittracker;
+
+import android.content.ContentValues;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Date;
+import java.util.Calendar;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+
+
+public class CreateNewHabitActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    MySQLiteHelper db;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_create_new_habit);
+        db = new MySQLiteHelper(this);
+
+        // Spinner element
+        Spinner spinner = (Spinner) findViewById(R.id.habitLengthSpinner);
+
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Choose Habit Length");
+        categories.add("10 Day Habit");
+        categories.add("21 Day Habit");
+        categories.add("28 Day Habit");
+        categories.add("60 Day Habit");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
+    }
+
+    public void cancelNewHabitClicked(View view) {
+
+        this.finish();
+
+    }
+
+    public void saveNewHabitClicked(View view) {
+        EditText textView = (EditText) findViewById(R.id.habitNameText);
+
+        Habit newHabit = new Habit();
+        newHabit.habitName = textView.getText().toString();
+        newHabit.startDate = AppDataChanger.DateToInteger(new Date());
+        int habitLength;
+        Spinner spinner = (Spinner) findViewById(R.id.habitLengthSpinner);
+
+        switch ((String)spinner.getSelectedItem()) {
+            case "Choose Habit Length":
+                newHabit.habitLength = 0;
+                break;
+            case "10 Day Habit":
+                newHabit.habitLength = 10;
+
+                break;
+            case "21 Day Habit":
+                newHabit.habitLength = 21;
+                break;
+            case "28 Day Habit":
+                newHabit.habitLength = 28;
+                break;
+            default:
+                newHabit.habitLength = 60;
+                break;
+        }
+
+
+        if (newHabit.habitLength != 0) {
+            Long newId = db.addHabit(newHabit);
+            for (int x = 0; x < newHabit.habitLength; x++){
+                Calendar c = Calendar.getInstance();
+                c.setTime(new Date());
+                c.add(Calendar.DATE, x);  // number of days to add
+                Date newDate = c.getTime();  // dt is now the new date
+                HabitResult newHabitResult = new HabitResult(newId.intValue() , AppDataChanger.DateToInteger(newDate));
+                Long newResutlid = db.addHabitResult(newHabitResult);
+            }
+
+            this.finish();
+        }else{
+            Toast.makeText(this.getApplication().getApplicationContext(), "Please select desired length before saving Habit", Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
+}
