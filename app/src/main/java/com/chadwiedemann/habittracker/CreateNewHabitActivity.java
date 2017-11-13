@@ -1,9 +1,11 @@
 package com.chadwiedemann.habittracker;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -28,7 +30,7 @@ public class CreateNewHabitActivity extends AppCompatActivity implements Adapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_habit);
         db = new MySQLiteHelper(this);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Spinner element
         Spinner spinner = (Spinner) findViewById(R.id.habitLengthSpinner);
 
@@ -51,7 +53,22 @@ public class CreateNewHabitActivity extends AppCompatActivity implements Adapter
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
+        EditText editText = (EditText) findViewById(R.id.habitNameText);
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     @Override
@@ -60,7 +77,7 @@ public class CreateNewHabitActivity extends AppCompatActivity implements Adapter
         String item = parent.getItemAtPosition(position).toString();
 
         // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG).show();
     }
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
@@ -70,6 +87,11 @@ public class CreateNewHabitActivity extends AppCompatActivity implements Adapter
 
         this.finish();
 
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public void saveNewHabitClicked(View view) {

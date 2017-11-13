@@ -6,19 +6,32 @@
     android:layout_height="match_parent"
     tools:context="com.chadwiedemann.habittracker.CreateNewHabitActivity"
     android:orientation="vertical"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
     >
 
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create New Habit"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="28sp"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".5" />
+        android:layout_weight=".25" />
 
     <EditText
         android:id="@+id/habitNameText"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".5"
+        android:layout_weight=".25"
         android:layout_margin="20dp"
         android:ems="10"
         android:hint="Habit Name"
@@ -32,7 +45,14 @@
     <Spinner
         android:id="@+id/habitLengthSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".25"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,17 +65,25 @@
             android:id="@+id/cancelCreateHabitButton"
             android:onClick="cancelNewHabitClicked"
             android:layout_width="0dp"
+            android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:text="Cancel" />
 
         <Button
             android:id="@+id/saveNewHabitButton"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="saveNewHabitClicked"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_marginRight="20dp"
             android:layout_height="wrap_content"
             android:text="Save" />
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </android.widget.LinearLayout>

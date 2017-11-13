@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.GregorianCalendar;
 
 import static android.R.attr.value;
+import static android.R.attr.x;
 
 /**
  * Created by chadwiedemann on 10/17/17.
@@ -41,6 +42,15 @@ public class AppDataChanger {
         int day = (calendar.get(Calendar.DAY_OF_MONTH));
 
         return year + month + day;
+    }
+
+    public static int IntegerDatePlusDay(int daysToAdd, Date date){
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DATE, daysToAdd);  // number of days to add
+        Date newDate = c.getTime();  // dt is now the new date
+        return DateToInteger(newDate);
+
     }
 
 }

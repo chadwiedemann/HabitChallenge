@@ -2,6 +2,7 @@ package com.chadwiedemann.habittracker;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,12 +18,15 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static android.media.CamcorderProfile.get;
 
 public class DisplayHabitActivity extends AppCompatActivity {
@@ -34,27 +38,25 @@ public class DisplayHabitActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = new MySQLiteHelper(this);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_display_habit);
         TextView currentHabitTextView =  (TextView) findViewById(R.id.habitTextView);
         Habit habitToDisplay = DataHolder.getInstance().getDisplayedHabit();
         currentHabitTextView.setText(habitToDisplay.habitName);
 
         mListView = (ListView) findViewById(R.id.current_Habit_list_view);
-// 1
         final List<HabitResult> currentHabitResults = habitToDisplay.days;
-// 2
-//        String[] listItems = new String[currentHabitResults.size()];
-//// 3
-//        for(int i = 0; i < currentHabitResults.size(); i++){
-//            HabitResult result = currentHabitResults.get(i);
-//
-//            listItems[i] = Integer.toString(result.result_date);
-//        }
-// 4
+
         HabitResultAdapter adapter = new HabitResultAdapter(this, R.layout.habit_result_row, currentHabitResults);
         mListView.setAdapter(adapter);
     }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
 
     public void deleteHabitClicked(View view) {
         db.deleteHabit(DataHolder.getInstance().getDisplayedHabit());
@@ -98,6 +100,116 @@ public class DisplayHabitActivity extends AppCompatActivity {
             successButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Date firstDateOfHabit = AppDataChanger.IntegerToDate(resultsList.get(0).result_date) ;
+                    int firstDay = AppDataChanger.IntegerDatePlusDay(0, firstDateOfHabit);
+                    int thirdDay = AppDataChanger.IntegerDatePlusDay(2, firstDateOfHabit);
+                    int seventhDay = AppDataChanger.IntegerDatePlusDay(6, firstDateOfHabit);
+                    int tenthDay = AppDataChanger.IntegerDatePlusDay(9, firstDateOfHabit);
+                    int fourteenthDay = AppDataChanger.IntegerDatePlusDay(13, firstDateOfHabit);
+                    int twentyFirstDay = AppDataChanger.IntegerDatePlusDay(20, firstDateOfHabit);
+                    int twentyEightDay = AppDataChanger.IntegerDatePlusDay(27, firstDateOfHabit);
+                    int thirtyFifthDay = AppDataChanger.IntegerDatePlusDay(34, firstDateOfHabit);
+                    int fourtySecondDay = AppDataChanger.IntegerDatePlusDay(41, firstDateOfHabit);
+                    int fiftiethDay = AppDataChanger.IntegerDatePlusDay(49, firstDateOfHabit);
+                    int fiftyFifthDay = AppDataChanger.IntegerDatePlusDay(54, firstDateOfHabit);
+                    int sixtiethDay = AppDataChanger.IntegerDatePlusDay(59, firstDateOfHabit);
+                    if (changingResult.result_date == firstDay) {
+                        for (int i=0; i < 3; i++) {
+                            Toast.makeText(getApplication().getApplicationContext(), "Congratulations! Making your first day is the hardest. Go ahead and shoot for day 3.", Toast.LENGTH_LONG).show();
+                        }
+                        MediaPlayer mPlayer2;
+                        mPlayer2= MediaPlayer.create(getApplication().getApplicationContext(), R.raw.clapping);
+                        mPlayer2.start();
+                    }
+                    if (changingResult.result_date == thirdDay){
+                        for (int i=0; i < 3; i++) {
+                            Toast.makeText(getApplication().getApplicationContext(), "Great job! You are creating a new habit and breaking an old one. Don’t give up. You can make it to day 7.", Toast.LENGTH_LONG).show();
+                        }
+                        MediaPlayer mPlayer2;
+                        mPlayer2= MediaPlayer.create(getApplication().getApplicationContext(), R.raw.clapping);
+                        mPlayer2.start();
+                    }
+                    if (changingResult.result_date == seventhDay){
+                        for (int i=0; i < 3; i++) {
+                            Toast.makeText(getApplication().getApplicationContext(), "Way to go! One week is a wonderful accomplishment. You are creating new neural pathways for your new behavior. Set your sights on day 10.", Toast.LENGTH_LONG).show();
+                        }
+                        MediaPlayer mPlayer2;
+                        mPlayer2= MediaPlayer.create(getApplication().getApplicationContext(), R.raw.clapping);
+                        mPlayer2.start();
+                    }
+                    if (changingResult.result_date == tenthDay){
+                        for (int i=0; i < 3; i++) {
+                            Toast.makeText(getApplication().getApplicationContext(), "10 Days is a significant milestone. You are doing great! Don’t get discouraged or weary 2 weeks is right around the corner.", Toast.LENGTH_LONG).show();
+                        }
+                        MediaPlayer mPlayer2;
+                        mPlayer2= MediaPlayer.create(getApplication().getApplicationContext(), R.raw.clapping);
+                        mPlayer2.start();
+                    }
+                    if (changingResult.result_date == fourteenthDay){
+                        for (int i=0; i < 3; i++) {
+                            Toast.makeText(getApplication().getApplicationContext(), "Sensational! The fact that you are checking this day off shows how serious you are. Don’t be discouraged by any set-backs. You are creating new habits and breaking old ones. Let’s go for 21 days!", Toast.LENGTH_LONG).show();
+                        }
+                        MediaPlayer mPlayer2;
+                        mPlayer2= MediaPlayer.create(getApplication().getApplicationContext(), R.raw.clapping);
+                        mPlayer2.start();
+                    }
+                    if (changingResult.result_date == twentyFirstDay){
+                        for (int i=0; i < 3; i++) {
+                            Toast.makeText(getApplication().getApplicationContext(), "Excellent! Studies have shown that many new habits are formed in 21 days. Your brain is being rewired and your behavior is being changed. One week left to 28 days!", Toast.LENGTH_LONG).show();
+                        }
+                        MediaPlayer mPlayer2;
+                        mPlayer2= MediaPlayer.create(getApplication().getApplicationContext(), R.raw.clapping);
+                        mPlayer2.start();
+                    }
+                    if (changingResult.result_date == twentyEightDay){
+                        for (int i=0; i < 5; i++) {
+                            Toast.makeText(getApplication().getApplicationContext(), "Tremendous! Congratulations! You have made it to 28 days. Celebrate this!!! Tell someone. This has been proven to be a significant milestone in creating new habits. To really make this stick and not to let your guard down you need to move into relapse prevention mode. Manage your triggers, keep accountable to someone, use your support group. Your next target is day 35.", Toast.LENGTH_LONG).show();
+                        }
+                        MediaPlayer mPlayer2;
+                        mPlayer2= MediaPlayer.create(getApplication().getApplicationContext(), R.raw.clapping);
+                        mPlayer2.start();
+                    }
+                    if (changingResult.result_date == thirtyFifthDay){
+                        for (int i=0; i < 3; i++) {
+                            Toast.makeText(getApplication().getApplicationContext(), "You are doing fantastic. You new way of life is becoming your new normal. Next goal is day 42.", Toast.LENGTH_LONG).show();
+                        }
+                        MediaPlayer mPlayer2;
+                        mPlayer2= MediaPlayer.create(getApplication().getApplicationContext(), R.raw.clapping);
+                        mPlayer2.start();
+                    }
+                    if (changingResult.result_date == fourtySecondDay){
+                        for (int i=0; i < 3; i++) {
+                            Toast.makeText(getApplication().getApplicationContext(), "Marvelous! Keep it up. If you are struggling at all get some help. Don’t give up.\n" +
+                                    "The next goal is day 50.", Toast.LENGTH_LONG).show();
+                        }
+                        MediaPlayer mPlayer2;
+                        mPlayer2= MediaPlayer.create(getApplication().getApplicationContext(), R.raw.clapping);
+                        mPlayer2.start();
+                    }
+                    if (changingResult.result_date == fiftiethDay){
+                        for (int i=0; i < 3; i++) {
+                            Toast.makeText(getApplication().getApplicationContext(), "You are doing great! Celebrate. Let someone know how you are doing. Also, don’t let down your guard. Keep doing the things that got you this far. The next target is Day 55.", Toast.LENGTH_LONG).show();
+                        }
+                        MediaPlayer mPlayer2;
+                        mPlayer2= MediaPlayer.create(getApplication().getApplicationContext(), R.raw.clapping);
+                        mPlayer2.start();
+                    }
+                    if (changingResult.result_date == fiftyFifthDay){
+                        for (int i=0; i < 3; i++) {
+                            Toast.makeText(getApplication().getApplicationContext(), "Outstanding! You are almost at 60 days. You have done a great job. Keep it up. The next goal is day 60.", Toast.LENGTH_LONG).show();
+                        }
+                        MediaPlayer mPlayer2;
+                        mPlayer2= MediaPlayer.create(getApplication().getApplicationContext(), R.raw.clapping);
+                        mPlayer2.start();
+                    }
+                    if (changingResult.result_date == sixtiethDay){
+                        for (int i=0; i < 6; i++) {
+                            Toast.makeText(getApplication().getApplicationContext(), "Congratulations you have completed the 60 day Habit Challenge! Your habit changes are deeply planted in your brain. Continue to do so well. If you begin to get lax, if stress is causing you to become tempted, or a slip gets you down, come back and do another 28-day challenge. The discipline of monitoring will help you reestablish your habit.", Toast.LENGTH_LONG).show();
+                        }
+                        MediaPlayer mPlayer2;
+                        mPlayer2= MediaPlayer.create(getApplication().getApplicationContext(), R.raw.clapping);
+                        mPlayer2.start();
+                    }
                     failButton.setChecked(false);
                     changingResult.is_success = 2;
                     db.updateHabitResult(changingResult);
@@ -134,26 +246,6 @@ public class DisplayHabitActivity extends AppCompatActivity {
             SimpleDateFormat dt1 = new SimpleDateFormat("MM-dd-yyyy");
             String newstring = dt1.format(resultDate);
             dateText.setText(newstring);
-//            buttonGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//                public void onCheckedChanged(RadioGroup group, int checkedId) {
-//
-//                    switch (checkedId) {
-//                        case R.id.failRadioButton:
-//                            changingResult.is_success = 1;
-//                            db.updateHabitResult(changingResult);
-//
-//                            break;
-//                        case R.id.successRadioButton:
-//                            changingResult.is_success = 2;
-//                            db.updateHabitResult(changingResult);
-//                            break;
-//                        default:
-//
-//                    }
-//                    notifyDataSetChanged();
-//                }
-//
-//            });
             return convertView;
         }
     }

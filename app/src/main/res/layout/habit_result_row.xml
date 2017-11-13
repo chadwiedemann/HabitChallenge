@@ -24,14 +24,15 @@
                 android:textStyle="bold" />
 
             <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="6" />
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="7" />
 
             <RadioGroup
                 android:id="@+id/resultRadioGroup"
-                android:layout_width="200dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="15"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -49,6 +50,11 @@
                     android:checked="false"
                     android:text="Success" />
             </RadioGroup>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2" />
 
         </LinearLayout>
 
