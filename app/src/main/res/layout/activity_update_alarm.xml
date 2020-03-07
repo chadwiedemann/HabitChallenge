@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.chadwiedemann.habittracker.DisplayHabitActivity"
+    tools:context="com.chadwiedemann.habittracker.UpdateAlarmActivity"
     android:orientation="vertical"
     >
 
@@ -16,7 +16,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="HabitDisplayScreen"
+        android:text="UpdateAlarm"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="24sp"
@@ -31,33 +31,30 @@
         android:layout_below="@id/habitTextView"
         android:layout_height="20dp" />
 
-    <ListView
-        android:id="@+id/current_Habit_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_above="@+id/editAlamButton"
-        android:layout_below="@+id/space1"
-        >
-
-    </ListView>
-
-    <Button
-        android:id="@+id/editAlamButton"
-        android:onClick="updateAlarmClicked"
-        style="@style/Widget.AppCompat.Button.Colored"
+    <Switch
+        android:id="@+id/alarmSwitch3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update Alarm"
-        android:layout_above="@+id/deleteButton"
+        android:padding="8dp"
+        android:layout_below="@id/space1"
+        android:text="Daily Reminder"
         />
 
+    <TimePicker
+        android:id="@+id/timePicker3"
+        android:layout_below="@id/alarmSwitch3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
     <Button
-        android:id="@+id/deleteButton"
-        android:onClick="deleteHabitClicked"
+        android:id="@+id/saveAlarmButton"
+        android:onClick="saveAlarmClicked"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Delete Habit"
+        android:text="Save"
         android:layout_alignParentBottom="true"
         />
 

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.chadwiedemann.habittracker.CravingMeterActivity"
+android:orientation="vertical"
+android:background="@drawable/state_selector"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/state_selector"
+    >
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Craving Meter"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="It is helpful to know where you are in relationship to your craving. once you have slipped or relapsed it is too late to check. Although you can start over it would be better to stop your craving before it escalates into behavior." />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Where are you today with your craving 1-5 (1 being not bothered, 5 extremely agitated and ready to give in.) If you are a 3, 4 or 5 go to Craving Assistance Toolbox." />
+
+    <SeekBar
+        android:id="@+id/craving_level_seekbar"
+        style="@android:style/Widget.DeviceDefault.Light.SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="5"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:progress="1"
+
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cravings_list_view"
+        android:choiceMode="singleChoice"
+        android:listSelector="@android:color/darker_gray"/>
+
+
+</LinearLayout>
+
+<Button
+    android:id="@+id/addcravingbutton"
+    android:onClick="addCravingClicked"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Add a Craving"
+    android:layout_alignParentBottom="true"
+    />
+
+</android.widget.RelativeLayout>

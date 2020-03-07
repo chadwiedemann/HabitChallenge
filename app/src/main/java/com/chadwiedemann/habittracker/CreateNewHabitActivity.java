@@ -1,15 +1,20 @@
 package com.chadwiedemann.habittracker;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.content.ContentValues;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,11 +23,13 @@ import java.util.Date;
 import java.util.Calendar;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+import static com.chadwiedemann.habittracker.DataHolder.alarmManager;
 
 
 public class CreateNewHabitActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     MySQLiteHelper db;
+    private Switch alarmSwitch;
 
 
     @Override
@@ -89,6 +96,8 @@ public class CreateNewHabitActivity extends AppCompatActivity implements Adapter
 
     }
 
+
+
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -96,11 +105,19 @@ public class CreateNewHabitActivity extends AppCompatActivity implements Adapter
 
     public void saveNewHabitClicked(View view) {
         EditText textView = (EditText) findViewById(R.id.habitNameText);
+        Switch alarmSwitch = (Switch) findViewById(R.id.alarmSwitch2);
+        TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker2);
+        int alarmState = 0;
+        if (alarmSwitch.isChecked()){
+            alarmState = 1;
+        }
 
         Habit newHabit = new Habit();
         newHabit.habitName = textView.getText().toString();
         newHabit.startDate = AppDataChanger.DateToInteger(new Date());
-        int habitLength;
+        newHabit.alarmIsActive = alarmState;
+        newHabit.alarmMinute = timePicker.getCurrentMinute();
+        newHabit.alarmHour = timePicker.getCurrentHour();
         Spinner spinner = (Spinner) findViewById(R.id.habitLengthSpinner);
 
         switch ((String)spinner.getSelectedItem()) {
@@ -133,7 +150,10 @@ public class CreateNewHabitActivity extends AppCompatActivity implements Adapter
                 HabitResult newHabitResult = new HabitResult(newId.intValue() , AppDataChanger.DateToInteger(newDate));
                 Long newResutlid = db.addHabitResult(newHabitResult);
             }
-
+            newHabit.id = newId.intValue();
+            if (alarmSwitch.isChecked()){
+                AlarmReceiver.setAlarm(this, newHabit);
+            }
             this.finish();
         }else{
             Toast.makeText(this.getApplication().getApplicationContext(), "Please select desired length before saving Habit", Toast.LENGTH_SHORT).show();

@@ -31,7 +31,7 @@
         android:id="@+id/habitNameText"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".25"
+        android:layout_weight=".5"
         android:layout_margin="20dp"
         android:ems="10"
         android:hint="Habit Name"
@@ -46,13 +46,32 @@
         android:id="@+id/habitLengthSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginRight="20dp" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".25"/>
+
+    <Switch
+        android:id="@+id/alarmSwitch2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".25"
+        android:layout_margin="20dp"
+        android:text="Daily Reminder"
+        android:checked="true"
+        />
+
+    <TimePicker
+        android:id="@+id/timePicker2"
+        android:layout_width="match_parent"
+        android:timePickerMode="spinner"
+        android:layout_height="0dp"
+        android:layout_weight="1.25"
+
+        />
 
     <LinearLayout
         android:layout_width="match_parent"

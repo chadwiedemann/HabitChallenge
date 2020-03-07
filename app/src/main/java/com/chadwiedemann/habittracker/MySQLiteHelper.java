@@ -35,8 +35,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
     private static final String KEY_IS_SUCCESS = "is_success";
     private static final String KEY_RESULT_DATE = "result_date";
     private static final String KEY_HABIT_ID = "habit_id";
+    private static final String KEY_ALARM_HOUR = "alarm_hour";
+    private static final String KEY_ALARM_MINUTE = "alarm_minute";
+    private static final String KEY_ALARM_IS_ACTIVE = "alarm_is_active";
 
-    private static final String[] HABITCOLUMNS = {KEY_ID,KEY_NAME,KEY_START_DATE};
+    private static final String[] HABITCOLUMNS = {KEY_ID,KEY_NAME,KEY_START_DATE,KEY_ALARM_HOUR,KEY_ALARM_MINUTE,KEY_ALARM_IS_ACTIVE};
     private static final String[] HABITRESULTCOLUMNS = {KEY_ID,KEY_IS_SUCCESS,KEY_RESULT_DATE};
 
     public MySQLiteHelper(Context context) {
@@ -49,7 +52,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         String CREATE_HABIT_TABLE = "CREATE TABLE habits ( " +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "Name TEXT, "+
-                "Start_Date INTEGER, " + "Length INTEGER )";
+                "Start_Date INTEGER, " +
+                "alarm_hour INTEGER, "+
+                "alarm_minute INTEGER, "+
+                "alarm_is_active INTEGER, "+
+                "Length INTEGER )";
 
         // create books table
         db.execSQL(CREATE_HABIT_TABLE);
@@ -84,6 +91,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, habit.habitName); // get title
         values.put(KEY_START_DATE, habit.startDate); // get author
+        values.put(KEY_ALARM_MINUTE, habit.alarmMinute);
+        values.put(KEY_ALARM_HOUR, habit.alarmHour);
+        values.put(KEY_ALARM_IS_ACTIVE, habit.alarmIsActive);
 
         // 3. insert
         long newId = db.insert(TABLE_HABITS, // table
@@ -135,6 +145,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
                 habit.id = (Integer.parseInt(cursor.getString(0)));
                 habit.habitName = (cursor.getString(1));
                 habit.startDate = (Integer.parseInt(cursor.getString(2)));
+                habit.alarmHour = (Integer.parseInt(cursor.getString(3)));
+                habit.alarmMinute = (Integer.parseInt(cursor.getString(4)));
+                habit.alarmIsActive = (Integer.parseInt(cursor.getString(5)));
                 habit.days = new ArrayList<HabitResult>();
                 // Add book to books
                 habits.add(getAllHabitResultsFor(habit));
@@ -209,10 +222,23 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
                 values, // column/value
                 KEY_ID+" = ?", // selections
                 new String[] { String.valueOf(result.id) }); //selection args
-
         // 4. close
         db.close();
+        return i;
+    }
 
+    public int updateHabit(Habit habit) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_ALARM_IS_ACTIVE, habit.alarmIsActive);
+        values.put(KEY_ALARM_MINUTE, habit.alarmMinute);
+        values.put(KEY_ALARM_HOUR, habit.alarmHour);
+
+        int i = db.update(TABLE_HABITS,
+                values,
+                KEY_ID+" = ?",
+                new String [] { String.valueOf(habit.id)});
+        db.close();
         return i;
 
     }

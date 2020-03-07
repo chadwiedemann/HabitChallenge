@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/daily_reminder_item"
+        android:orderInCategory="100"
+        android:title="Daily Reminder"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/about_the_app_item"
+        android:orderInCategory="100"
+        android:title="About Us"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/products_item"
+        android:orderInCategory="100"
+        android:title="Products"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/support_mission_item"
+        android:orderInCategory="100"
+        android:title="Support our mission"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/contact_us_item"
+        android:orderInCategory="100"
+        android:title="Contact Us"
+        app:showAsAction="never" />
+
+
+</menu>

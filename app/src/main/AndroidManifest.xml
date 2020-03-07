@@ -2,27 +2,64 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chadwiedemann.habittracker">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
     <application
         android:allowBackup="true"
-        android:icon="@drawable/icon"
+        android:hardwareAccelerated="false"
+        android:icon="@drawable/habit_app_logo"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
-
-        <activity android:name=".HabitListActivity"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".HomeScreenActivity"
+            android:label="@string/app_name" />
+        <activity android:name=".DisplayHabitActivity" />
+        <activity android:name=".CreateNewHabitActivity" />
+        <activity android:name=".HabitListActivity" />
+        <activity android:name=".WebViewActivity" />
+        <activity
+            android:name=".Splash"
             android:theme="@style/splashScreenTheme">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplayHabitActivity" />
-        <activity android:name=".CreateNewHabitActivity"></activity>
+        <activity android:name=".DailyReminderActivity" />
+        <activity android:name=".AboutUsActivity" />
+        <activity android:name=".ProductsActivity" />
+        <activity android:name=".SupportOurMissionActivity" />
+        <activity android:name=".ContactUsActivity" />
+        <activity android:name=".AlarmClockActivity" />
 
+        <receiver android:name=".AlarmReceiver" />
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".RingtonePlayingService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".UpdateAlarmActivity" />
+        <activity
+            android:name=".CravingMeterActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ManageYourTriggersActivity"></activity>
     </application>
 
 </manifest>

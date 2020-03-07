@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.chadwiedemann.habittracker.SupportOurMissionActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="The goal of Empower For Living is to get life changing tools and resources into the hands of all those that need them. This is done through offering products at very resonable prices and free to those that cannot afford them. We can do this becuase of those who believe in what we are doing and graciously support us." />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="You can help us continue to provide life changing Apps, books and videos to those homeless, trapped in addiction or cannot afford our materials by donating to Empower Ministry. We are a not-for-profit therefore your gifts will be tax-deductible. You can use PayPal or mail a check made payable to Empower Ministry at 12450 S. 68th Ct., Palos Heights, IL 60463" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:text="Any questions please contact us at" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="ron@empowerministry.org" />
+</android.widget.LinearLayout>
+

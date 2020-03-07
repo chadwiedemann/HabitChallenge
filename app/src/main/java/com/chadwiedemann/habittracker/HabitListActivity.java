@@ -51,8 +51,6 @@ public class HabitListActivity extends AppCompatActivity {
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Habit listItem = allHabits.get(position);
-
-
                 DataHolder.getInstance().setHabit(listItem);
                 Intent i = new Intent(HabitListActivity.this, DisplayHabitActivity.class);
                 startActivity(i);
@@ -63,8 +61,10 @@ public class HabitListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
+//        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         setContentView(R.layout.activity_habit_list);
         db = new MySQLiteHelper(this);
 
@@ -78,5 +78,10 @@ public class HabitListActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
 
 }

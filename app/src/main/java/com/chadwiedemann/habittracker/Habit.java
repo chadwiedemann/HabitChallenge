@@ -17,24 +17,30 @@ public class Habit {
     int startDate;
     int id;
     int habitLength;
+    int alarmMinute;
+    int alarmHour;
+    int alarmIsActive;
     ArrayList<HabitResult> days;
 
     public Habit(){}
 
-    public Habit(String name, int startDate, int habitLength) {
+    public Habit(String name, int startDate, int habitLength, int alarmHour, int alarmMinute, int alarmIsActive) {
         super();
         this.habitName = name;
         this.startDate = startDate;
         this.habitLength = habitLength;
+        this.alarmHour = alarmHour;
+        this.alarmMinute = alarmMinute;
+        this.alarmIsActive = alarmIsActive;
         this.days = new ArrayList<HabitResult>();
     }
 
 
     //getters & setters
 
-    @Override
-    public String toString() {
-        return "Habit [id=" + id + ", name=" + habitName + ", startDate=" + startDate
-                + "]";
-    }
+//    @Override
+//    public String toString() {
+//        return "Habit [id=" + id + ", name=" + habitName + ", startDate=" + startDate
+//                + "]";
+//    }
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:weightSum="1"
+    tools:context="com.chadwiedemann.habittracker.DailyReminderActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:padding="8dp"
+        android:text="Why leave it to Chance? Get a daily reminder to check in."
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="The goal is to achieve mastery in the goal that you set for your-self. You can do this one of two ways. If there are certain tasks you have to do then perhaps a reminder in the morning as you check your day is what you need. When you get your reminder you can check off the success from the previous day and set your sights on starting out the new day." />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="If you are extinguishing a habit then perhaps a congratulations at the end of the day is the incentive you need to keep going. When you get the reminder you can check off your success and be encouraged as you focus on the day to come." />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="Perhaps another time is good for you. You choose the time and we will make sure you get a reminder to check in." />
+
+    <Switch
+        android:id="@+id/alarmSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Daily Reminder"
+        android:onClick="alarmSwitchPressed"/>
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"
+        />
+
+
+</android.widget.LinearLayout>
+
+
+
+
+
+
