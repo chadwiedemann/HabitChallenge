@@ -4,74 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.chadwiedemann.habittracker.HomeScreenActivity"
+    android:background="#19FFFFFF"
     android:orientation="vertical"
-    android:weightSum="1">
-
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".25"
-        android:paddingTop="20dp"
-        app:srcCompat="@drawable/habit_app_logo" />
+    android:weightSum="1"
+    tools:context="com.chadwiedemann.habittracker.HomeScreenActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".25"
-        android:layout_margin="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="0dp"
+        android:layout_weight=".30"
         android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="71dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="170dp"
+            android:layout_weight="0"
+            android:paddingTop="10dp"
+            app:srcCompat="@drawable/habit_app_logo"
+            android:contentDescription="TODO"
+            android:layout_marginStart="170dp" />
 
 
         <ImageButton
 
             android:id="@+id/get_started_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="-85dp"
+            android:layout_marginTop="90dp"
+            android:layout_weight="0"
             android:background="#00000000"
             android:onClick="goToWebView"
             android:scaleType="fitCenter"
             android:src="@drawable/get_started_now"
-            />
+            android:contentDescription="TODO"
+            android:layout_marginStart="-85dp" />
 
-
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5" />
-
-        <ImageButton
-
-            android:id="@+id/record_progress_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:background="#00000000"
-            android:onClick="gotoRecordProgressActivity"
-            android:scaleType="fitCenter"
-            android:src="@drawable/record_todays_progress" />
-
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5" />
 
         <ImageButton
 
             android:id="@+id/app_handbook_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_weight="0"
             android:background="#00000000"
             android:onClick="goToWebView"
             android:scaleType="fitCenter"
             android:src="@drawable/habit_app_handbook"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:contentDescription="TODO" />
 
 
     </LinearLayout>
@@ -79,22 +63,101 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="20dp"
-        android:layout_weight=".25"
+        android:layout_margin="0dp"
+        android:layout_weight=".42"
+        android:background="#F7F6F4F4"
         android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txt_habitchallenge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="0"
+            android:text="@string/txt_habitchallenge"
+            android:textColor="#3F51B5"
+            android:textSize="20sp"
+            android:layout_marginStart="130dp" />
+
+        <ImageButton
+
+            android:id="@+id/triggers_checklist_button"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="-250dp"
+            android:layout_marginTop="140dp"
+            android:layout_weight="0"
+            android:background="#00000000"
+            android:onClick="goToManageYourTriggersActivity"
+            android:scaleType="fitCenter"
+            android:src="@drawable/manage_your_trigger_checklist"
+            android:layout_marginStart="-250dp" />
+
+        <ImageButton
+
+            android:id="@+id/record_progress_button"
+            android:layout_width="166dp"
+            android:layout_height="154dp"
+            android:layout_marginTop="40dp"
+            android:layout_weight="2"
+            android:background="#00000000"
+            android:contentDescription="TODO"
+            android:onClick="gotoRecordProgressActivity"
+            android:scaleType="centerInside"
+            android:src="@drawable/recordtodaysprogress" />
 
 
         <ImageButton
 
             android:id="@+id/craving_meter_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="0"
             android:background="#00000000"
+            android:contentDescription="TODO"
             android:onClick="goToCravingMeterActivity"
             android:scaleType="fitCenter"
-            android:src="@drawable/craving_intensity_meter" />
+            android:src="@drawable/cravingintensitymeter" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="0dp"
+        android:layout_weight=".28"
+        android:background="#28FFEB3B"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:text="@string/txt_Support"
+            android:textColor="#3F51B5"
+            android:textSize="20sp"
+            android:layout_marginStart="170dp" />
+
+        <ImageButton
+
+            android:id="@+id/warning_signs_checklist_button"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="-280dp"
+            android:layout_marginLeft="-280dp"
+            android:layout_marginTop="70dp"
+            android:layout_weight="2"
+            android:background="#00000000"
+            android:contentDescription="TODO"
+            android:onClick="goToWebView"
+            android:scaleType="fitCenter"
+            android:src="@drawable/relapsewarningsigns" />
 
 
         <Space
@@ -102,18 +165,19 @@
             android:layout_height="wrap_content"
             android:layout_weight=".5" />
 
+
         <ImageButton
 
-            android:id="@+id/warning_signs_checklist_button"
+            android:id="@+id/spiritual_toolbox_button"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="70dp"
             android:layout_weight="2"
             android:background="#00000000"
+            android:contentDescription="TODO"
             android:onClick="goToWebView"
             android:scaleType="fitCenter"
-            android:src="@drawable/relapse_warning_signs" />
-
-
+            android:src="@drawable/buttonspiritualhelptoolbox" />
 
         <Space
             android:layout_width="wrap_content"
@@ -124,35 +188,13 @@
 
             android:id="@+id/craving_toolbox_button"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="70dp"
             android:layout_weight="2"
             android:background="#00000000"
             android:onClick="goToWebView"
             android:scaleType="fitCenter"
             android:src="@drawable/craving_assistance_toolbox" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="20dp"
-        android:layout_weight=".25"
-        android:orientation="horizontal">
-
-
-        <ImageButton
-
-            android:id="@+id/spiritual_toolbox_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:background="#00000000"
-            android:onClick="goToWebView"
-            android:scaleType="fitCenter"
-            android:src="@drawable/spiritual_help_toolbox" />
-
 
 
         <Space
@@ -164,30 +206,14 @@
 
             android:id="@+id/five_steps_to_overcoming_craving_button"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="70dp"
             android:layout_weight="2"
             android:background="#00000000"
             android:onClick="goToWebView"
             android:scaleType="fitCenter"
-            android:src="@drawable/five_steps_to_overcome_craving" />
-
-
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5" />
-
-        <ImageButton
-
-            android:id="@+id/triggers_checklist_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:background="#00000000"
-            android:onClick="goToManageYourTriggersActivity"
-            android:scaleType="fitCenter"
-            android:src="@drawable/manage_your_trigger_checklist" />
+            android:src="@drawable/five_steps_to_overcome_craving"
+            android:contentDescription="TODO" />
 
 
     </LinearLayout>

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HabitChallenge.iml" filepath="$PROJECT_DIR$/.idea/modules/HabitChallenge.iml" group="HabitChallenge" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/HabitChallenge-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/HabitChallenge-app.iml" group="HabitChallenge/app" />
       <module fileurl="file://$PROJECT_DIR$/HabitTracker.iml" filepath="$PROJECT_DIR$/HabitTracker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
